@@ -72,6 +72,8 @@ A set of sample CARIN Blue Button payloads is stored in `test/smoketest/` and ca
 
 The smoke tests use explicit FHIR resource IDs and are run in dependency order so reference-based resources are created successfully.
 
+### Create or update the smoke-test resources
+
 Run all smoke tests from a Unix shell:
 
 ```bash
@@ -101,6 +103,30 @@ BASE_URL=http://localhost:8080/fhir ./test/run-smoketests.sh
 ```
 
 The scripts default to create/update mode (`PUT`) for the resource set, which makes rerunning them idempotent for the same payload IDs.
+
+### Search-parameter validation
+
+The project also includes a search-parameter validation workflow for the key CARIN BB resources. It inspects the live FHIR CapabilityStatement, validates the supported search parameters for Organization, Practitioner, Patient, RelatedPerson, Coverage, Encounter, Condition, and Observation, and executes a targeted search for each parameter against the local server.
+
+Run the search-parameter tests from a Unix shell:
+
+```bash
+./test/run-search-parameter-tests.sh
+```
+
+Run the same validation from Windows Command Prompt:
+
+```bat
+test\run-search-parameter-tests.bat
+```
+
+The script writes a summary report in HTML format to:
+
+```text
+./test/search-parameter-report.html
+```
+
+The generated report includes total, passed, failed, and pass-rate metrics for each tested search parameter, and it can be opened in a web browser for review.
 
 ## Configuration
 
