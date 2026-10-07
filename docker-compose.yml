@@ -1,0 +1,50 @@
+# docker-compose.yml
+#version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: hapi-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: hapi
+      POSTGRES_USER: fhiruser
+      POSTGRES_PASSWORD: fhirpassword
+    volumes:
+      # Persists database data across container restarts
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fhiruser -d hapi"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  fhir:
+    image: hapiproject/hapi:latest
+    container_name: hapi-fhir-server
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    configs:
+      - source: hapi_config
+        target: /app/config/application.yaml
+    volumes:
+      - ./hapi.application.yaml:/app/config/application.yaml  # Mount your configuration
+    environment:
+      - spring.datasource.url=jdbc:postgresql://db:5432/hapi
+      - spring.datasource.username=fhiruser
+      - spring.datasource.password=fhirpassword
+      - spring.datasource.driverClassName=org.postgresql.Driver
+      - spring.jpa.properties.hibernate.dialect=ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgresDialect
+
+configs:
+  hapi_config:
+    file: ./hapi.application.yaml
+
+volumes:
+  pgdata:

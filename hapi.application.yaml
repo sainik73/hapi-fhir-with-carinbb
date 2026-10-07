@@ -1,0 +1,38 @@
+# hapi.application.yaml
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/hapi
+    username: fhiruser
+    password: fhirpassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.search.enabled: false
+
+hapi:
+  fhir:
+    # Forces the server to use the FHIR R4 standard
+    fhir_version: R4
+    # 1. Enable validation and runtime package installation for CARIN Blue Button IG
+    ig_runtime_upload_enabled: true
+    install_transitive_ig_dependencies: true
+    # Prevents background workers from locking up the application context on startup
+    prepopulate_terminology: false
+
+    # Optional: If you want to bypass strict terminology checking while debugging
+    defer_indexing_for_codesystems_of_size: 100
+
+    # 2. Tell the server to fetch and install the CARIN BB package on startup
+    implementationguides:
+      carin-bb:
+        name: hl7.fhir.us.carin-bb
+        version: 2.2.0 # Use 2.2.0 or the version targeted by your testing kit
+        installMode: STORE_AND_INSTALL
+        reloadExisting: false
+
+    tester:
+      home:
+        name: Local R4 Server
+        server_address: "http://localhost:8080/fhir"
+        fhir_version: R4
