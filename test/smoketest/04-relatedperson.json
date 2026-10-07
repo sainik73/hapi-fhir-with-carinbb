@@ -1,0 +1,26 @@
+{
+  "resourceType": "RelatedPerson",
+  "id": "relatedperson-carin-1",
+  "active": true,
+  "patient": {
+    "reference": "Patient/patient-carin-1"
+  },
+  "relationship": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "SPS",
+          "display": "spouse"
+        }
+      ],
+      "text": "Spouse"
+    }
+  ],
+  "name": [
+    {
+      "family": "Doe",
+      "given": ["John"]
+    }
+  ]
+}

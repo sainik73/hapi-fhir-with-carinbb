@@ -1,0 +1,23 @@
+{
+  "resourceType": "Patient",
+  "id": "patient-carin-1",
+  "identifier": [
+    {
+      "system": "http://example.org/patient-identifier",
+      "value": "CARINBB-PAT-001"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Doe",
+      "given": ["Jane", "A."]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-06-15",
+  "managingOrganization": {
+    "reference": "Organization/org-carin-1"
+  }
+}

@@ -66,6 +66,42 @@ curl -X POST http://localhost:8080/fhir/Patient \
    -d '{"resourceType":"Patient","name":[{"family":"Doe","given":["Jane"]}],"gender":"female"}'
 ```
 
+## Smoke tests
+
+A set of sample CARIN Blue Button payloads is stored in `test/smoketest/` and can be executed with the provided scripts.
+
+The smoke tests use explicit FHIR resource IDs and are run in dependency order so reference-based resources are created successfully.
+
+Run all smoke tests from a Unix shell:
+
+```bash
+./test/run-smoketests.sh
+```
+
+Run the same smoke tests from Windows Command Prompt:
+
+```bat
+test\run-smoketests.bat
+```
+
+Delete all smoke-test resources in reverse dependency order:
+
+```bash
+./test/run-smoketests.sh delete
+```
+
+```bat
+test\run-smoketests.bat delete
+```
+
+You can override the target FHIR server URL with:
+
+```bash
+BASE_URL=http://localhost:8080/fhir ./test/run-smoketests.sh
+```
+
+The scripts default to create/update mode (`PUT`) for the resource set, which makes rerunning them idempotent for the same payload IDs.
+
 ## Configuration
 
 - Application config: `hapi.application.yaml` (server settings, datasource, IG installation).

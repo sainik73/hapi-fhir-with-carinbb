@@ -1,0 +1,20 @@
+{
+  "resourceType": "Coverage",
+  "id": "coverage-carin-1",
+  "status": "active",
+  "beneficiary": {
+    "reference": "Patient/patient-carin-1"
+  },
+  "payor": [
+    {
+      "reference": "Organization/org-carin-1"
+    }
+  ],
+  "subscriber": {
+    "reference": "Patient/patient-carin-1"
+  },
+  "subscriberId": "SUB-1001",
+  "plan": {
+    "display": "Gold Plan"
+  }
+}

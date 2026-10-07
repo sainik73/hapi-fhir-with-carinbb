@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://example.org/patient-identifier",
+      "value": "CARINBB-1002"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Smith",
+      "given": ["Robert", "L."]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "555-765-4321",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "robert.smith@example.org"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-11-02",
+  "address": [
+    {
+      "use": "home",
+      "line": ["456 Oak Avenue"],
+      "city": "Springfield",
+      "state": "IL",
+      "postalCode": "62704",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "S",
+        "display": "Never Married"
+      }
+    ],
+    "text": "Never Married"
+  }
+}
