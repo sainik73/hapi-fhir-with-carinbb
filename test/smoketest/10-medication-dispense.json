@@ -1,0 +1,96 @@
+{
+  "resourceType": "MedicationDispense",
+  "id": "medicationdispense-carin-1",
+  "status": "completed",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1049630",
+        "display": "Amoxicillin 250mg/5ml Suspension"
+      }
+    ],
+    "text": "Amoxicillin 250mg/5ml Suspension"
+  },
+  "subject": {
+    "reference": "Patient/patient-carin-1"
+  },
+  "context": {
+    "reference": "Encounter/encounter-carin-1"
+  },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/practitioner-carin-1"
+      }
+    }
+  ],
+  "quantity": {
+    "value": 1,
+    "unit": "bottle",
+    "system": "http://unitsofmeasure.org",
+    "code": "{bottle}"
+  },
+  "daysSupply": {
+    "value": 10,
+    "unit": "days",
+    "system": "http://unitsofmeasure.org",
+    "code": "d"
+  },
+  "whenHandedOver": "2023-01-15T10:00:00Z",
+  "dosageInstruction": [
+    {
+      "sequence": 1,
+      "text": "Take 5ml by mouth every 8 hours for 10 days",
+      "timing": {
+        "repeat": {
+          "frequency": 3,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/route-codes",
+            "code": "PO",
+            "display": "Oral"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 5,
+            "unit": "ml",
+            "system": "http://unitsofmeasure.org",
+            "code": "{ml}"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Patient advised to complete the full course of antibiotics."
+    }
+  ],
+  "substitution": {
+    "type": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+          "code": "FP",
+          "display": "Formulary Policy"
+        }
+      ],
+      "text": "Formulary Policy"
+    },
+    "responsibleParty": [
+      {
+        "reference": "Practitioner/practitioner-carin-1"
+      }
+    ]
+  }
+}
