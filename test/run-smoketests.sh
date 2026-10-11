@@ -36,6 +36,8 @@ FILES=(
   "$SMOKETEST_DIR/06-encounter.json"
   "$SMOKETEST_DIR/07-condition.json"
   "$SMOKETEST_DIR/08-observation.json"
+  "$SMOKETEST_DIR/09-account.json"
+  "$SMOKETEST_DIR/10-medication-dispense.json"
 )
 
 if [[ "$MODE" == "delete" || "$MODE" == "cleanup" || "$MODE" == "--delete" ]]; then

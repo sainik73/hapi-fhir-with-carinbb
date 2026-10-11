@@ -92,6 +92,8 @@ def ensure_smoke_resources():
         TEST_DIR / "06-encounter.json",
         TEST_DIR / "07-condition.json",
         TEST_DIR / "08-observation.json",
+        TEST_DIR / "09-account.json",
+        TEST_DIR / "10-medication-dispense.json",
     ]
     missing = [str(f) for f in files if not f.exists()]
     if missing:
