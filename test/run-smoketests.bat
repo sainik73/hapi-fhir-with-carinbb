@@ -30,9 +30,11 @@ set "FILES[4]=%~dp0smoketest\05-coverage.json"
 set "FILES[5]=%~dp0smoketest\06-encounter.json"
 set "FILES[6]=%~dp0smoketest\07-condition.json"
 set "FILES[7]=%~dp0smoketest\08-observation.json"
+set "FILES[8]=%~dp0smoketest\09-account.json"
+set "FILES[9]=%~dp0smoketest\10-medication-dispense.json"
 
 if /I "%MODE%"=="delete" (
-  for /L %%i in (7,-1,0) do (
+  for /L %%i in (9,-1,0) do (
     set "file=!FILES[%%i]!"
     if not exist "!file!" (
       echo Missing required smoke file: !file!
@@ -59,7 +61,7 @@ if /I "%MODE%"=="delete" (
   exit /b 0
 )
 
-for /L %%i in (0,1,7) do (
+for /L %%i in (0,1,9) do (
   set "file=!FILES[%%i]!"
   if not exist "!file!" (
     echo Missing required smoke file: !file!
